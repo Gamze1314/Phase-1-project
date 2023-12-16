@@ -1,11 +1,45 @@
+<!--FORM WITH HEADER THAT CHANGES COLOR WHEN MOUSE OVER, AND SUBMIT TAG 3 INPUT TAGS THAT TAKE SPECIFICATIONS OF FIRMS THAT FDA MADE CALL FOR ( product name , brand name, category )   -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Online Shopping Marketplace</title>
+    <link href="./styles.css" rel="stylesheet"> 
 </head>
 <body>
-    <script src = "./index.js"></script>
+<div id="container">
+
+    <header>
+        <h1>Online Marketplace</h1>
+        
+        <p>Last Minute Deals</p>
+        
+      </header>
+    <form>
+        <label for="pname">Product Name:</label>
+        <input type="text" id="pname" name="pname"><br><br>
+        <label for="bname">Brand Name:  </label>
+        <input type="text" id="bname" name="bname"><br><br>
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category"><br><br>
+        <input type="submit" value="Search"><br><br>
+    </form>
+
+    <div id="main">
+        <ul id="show-details">
+
+        </ul>
+    </div>
+</div>
+    <footer>
+        <p>@2023 GK</p>
+        <p>Created by Gamze</p>
+        <p>Demo</p>
+    </footer>
+
+    <script src="index.js"></script>
 </body>
 </html>

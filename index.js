@@ -1,3 +1,19 @@
-// make sure js html talking to each other 
+document.addEventListener('DOMContentLoaded', function() {
+    function fetchProduct() {
+      // //get the products from the API 
+      let ul = document.getElementById('show-details'); 
+      fetch('https://dummyjson.com/products') 
+        .then(response => {
+          console.log(response);
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          //  MANIPULATE THE DATA HERE 
+        });
+    }
+  
+    fetchProduct(); 
+  });
 
-document.addEventListener("DOMContentLoaded", () => console.log("we are connected"))
+// status 200
