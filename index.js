@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderProduct(productArr) { // fetch API
    
-// use forEach to loop over and display product, create tags for each 
+use forEach to loop over and display product, create tags for each 
 
    let displays =  productArr.map((productObj) => { // create li for name(title) , price
   let card = document.createElement('div');
