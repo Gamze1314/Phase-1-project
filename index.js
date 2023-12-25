@@ -49,18 +49,20 @@ document.addEventListener('DOMContentLoaded', () => {
     model.textContent = name;
   
     let price2 = document.createElement('h4');
-    price.textContent = parseFloat(`${e.target.category.value}`)
-  
-    main.appendChild(card)
-    card.appendChild(name);
-    card.appendChild(price);
+    price2.textContent = `$${price}`
 
+
+
+    card2.appendChild(model)
+    card2.appendChild(price2)
+    main.appendChild(card2)
+    
 
   }
 
   function renderProduct(productArr) { // fetch API
    
-use forEach to loop over and display product, create tags for each 
+// use forEach to loop over and display product, create tags for each 
 
    let displays =  productArr.map((productObj) => { // create li for name(title) , price
   let card = document.createElement('div');
@@ -100,6 +102,6 @@ p.addEventListener('mouseover', () => {
   });
 
 
-     
-  // GET /monsters/?_limit=50&_page=undefined limit the number of products return 
+
 });
+
