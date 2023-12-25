@@ -1,10 +1,7 @@
+// contentloads and displays the products
+// last minute deals change color
+// submit event for form, that enables search by brand name
 
-
-// use mouseover event to get the title color's changed to red
-// add submit event 
-// filter for apple products , click ?
-// clear btn to clear DOM
-// check call stack
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,57 +10,59 @@ document.addEventListener('DOMContentLoaded', () => {
   let ul = document.getElementById('show-details')
   let form = document.getElementById('product-form')
   let main = document.getElementById('main')
-  // Define the number variable if needed
-  // let number = 1;
-
 
 
   fetch('https://dummyjson.com/products') // // fetch API
   .then(response => response.json())
   .then((data) => { 
-    console.log(data);
+    
     let productArr = data.products;
-    // renderProduct(productArr)// products array
-    renderProduct(productArr)
+    // console.log(productArr);
+    // console.log(data)
+    
+    renderProduct(productArr);
+    // handleAdd(e.target.pname.value)
+    // handleAdd(e.target.category.value)
+    
   })
   .catch((error) => console.error('Error fetching products:', error))
 
 
-      // function filters for Apple and displays on webpage
-      function filterProduct(productArr) {
-        let productName = e.target.pname.value
-        let brand = data.products.brand
-        ul.textContent = "";
-      
-        let filtered = productArr.filter((productObj) => productObj.startsWith(brand));
-        
-      
-        renderProduct(filtered)
-      
-      }
-      
-       // add mouseover event to change the color of 'Last Minute Deals' 
-       // call fetch product func async 
-       
-       
-        form.addEventListener('submit', (e) => {  // add eventListener to the form
-        e.preventDefault();
-        console.log(e);
-        let productName = e.target.pname.value
-        let category = e.target.category.value
-        let productArr = data.products;
-        filterProduct(productArr);
-      
-         form.reset();
-       });
+    
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let userInput = e.target.pname.value
+    // console.log(e.target.pname.value)
+   let catValue = e.target.category.value
+    handleAdd(userInput, catValue)
+    
+    form.reset();
+  
+  }) // add eventListener to the form;
+
+  function handleAdd(name, price){
+    //create DOM element , then append
+    let card2 = document.createElement('div');
+    card2.className = 'card';
+  
+    let model = document.createElement('h2');
+    model.textContent = name;
+  
+    let price2 = document.createElement('h4');
+    price.textContent = parseFloat(`${e.target.category.value}`)
+  
+    main.appendChild(card)
+    card.appendChild(name);
+    card.appendChild(price);
 
 
-
+  }
 
   function renderProduct(productArr) { // fetch API
-    // debugger;
+   
 // use forEach to loop over and display product, create tags for each 
- productArr.forEach((productObj) => { // create li for name(title) , price
+
+   let displays =  productArr.map((productObj) => { // create li for name(title) , price
   let card = document.createElement('div');
   card.className = 'card';
 
@@ -73,46 +72,34 @@ document.addEventListener('DOMContentLoaded', () => {
   let price = document.createElement('h4');
   price.textContent = `$${productObj.price}`;
 
+  let btn = document.createElement('button')
+  btn.textContent = 'ADD TO CART'
+
   main.appendChild(card)
   card.appendChild(name);
   card.appendChild(price);
-    
-  });
-        
+  card.appendChild(btn)  
+  });        
 }
 
 
-
- p.addEventListener('mouseover', () => {
+ // add click event to the 'clear' button', and clear out innerHTML in dom 
+let btn = document.getElementById('clear')
+btn.addEventListener('click', () => {
+ main.innerHTML = ''; // Clear the innerHTML 
+});
+   // add mouseover event to change the color of 'Last Minute Deals' 
+p.addEventListener('mouseover', () => {
   p.style.color = "red"
 
  }); 
 
    // Reset color on mouseout
   p.addEventListener('mouseout', () => {
-  p.style.color = "blue"; 
+  p.style.color = "rebeccapurple"; 
   });
 
 
- // add click event to the 'clear' button', and clear out innerHTML in dom 
-
- let btn = document.getElementById('clear')
- btn.addEventListener('click', () => {
-  main.innerHTML = ''; // Clear the innerHTML 
-});
-
-// function renderImg (urlArray) {
-//   // forEach  to get each url from the array
- 
-//     let divForImg = document.getElementById('dog-image-container')
-//      urlArray.forEach(url => {
-//          let imgTag = document.createElement('img');
-//          imgTag.src = url
-        
-//          divForImg.append(imgTag)
-//      });
-//    }
- 
-
-
+     
+  // GET /monsters/?_limit=50&_page=undefined limit the number of products return 
 });
