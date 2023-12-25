@@ -4,15 +4,27 @@ body {
     font-family: cursive;
     font-size: 18px;
     font-style: normal;
+    background-image: url("img_tree.gif"), url("paper.gif");
+    background-color: #cccccc;
 }
 header{ 
-    background-color: pink;
+    background-color:blue;
 }
 
 form {
     text-align: center;
     margin-top: 100px;
 }
+.card {
+    text-align: center;
+    border: grey solid 1px;
+    padding: 1rem;
+    width: 15rem;
+    height: 25rem;
+    display: inline-grid;
+    margin: 1rem 2rem;
+    box-shadow: 3px 4px #e04b52
+  }
 
 label {
     text-align: center;
@@ -22,6 +34,7 @@ footer {
     background-color: white;
     margin-top: 800px;
     text-align: center;
+
 }
 
 input {
