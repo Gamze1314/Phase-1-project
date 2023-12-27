@@ -12,16 +12,14 @@ let main = document.getElementById('main')
   .then((data) => { 
     
     let productArr = data.products;
-    // console.log(productArr);
+   console.log(productArr);
     // console.log(data)
     
     renderProduct(productArr);
     
   })
   .catch((error) => console.error('Error fetching products:', error))
-
-
-    
+   
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     let userInput = e.target.pname.value
@@ -51,7 +49,8 @@ let main = document.getElementById('main')
 
   function renderProduct(productArr) { 
 
-   let displays =  productArr.map((productObj) => { 
+  let displays =  productArr.map((productObj) => {
+  let card = document.createElement('div') 
   card.className = 'card';
 
   let name = document.createElement('h2');
