@@ -1,88 +1,86 @@
-
 document.addEventListener('DOMContentLoaded', () => {
 
-let p = document.querySelector('p')
-let ul = document.getElementById('show-details')
-let form = document.getElementById('product-form')
-let main = document.getElementById('main')
+const p = document.querySelector('p');
+const ul = document.getElementById('show-details');
+const form = document.getElementById('product-form');
+const main = document.getElementById('main');
 
 
-  fetch('https://dummyjson.com/products')
+  fetch('https://dummyjson.com/products')// fetch API
   .then(response => response.json())
-  .then((data) => { 
+  .then((data) => { // callback
     
-    let productArr = data.products;
-   console.log(productArr);
+    let productArr = data.products; // PRODUCTS ARR
+    console.log(productArr);
     // console.log(data)
-    
-    renderProduct(productArr);
-    
+    renderProducts(productArr); // renderProducts -> not callback
+   
   })
   .catch((error) => console.error('Error fetching products:', error))
-   
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    let userInput = e.target.pname.value
-    let catValue = e.target.category.value
 
-    handleAdd(userInput, catValue)
+  form.addEventListener('submit', (e) => { // callback
+    e.preventDefault();
+    let userInput = e.target.pname.value;
+    let catValue = e.target.category.value;
+
+    handleAdd(userInput, catValue);
     
     form.reset();
-  }) 
+  });
 
   function handleAdd(name, price){
   
-    let card2 = document.createElement('div');
+    const card2 = document.createElement('div');
     card2.className = 'card';
   
-    let model = document.createElement('h2');
-    model.textContent = name;
+    const model = document.createElement('h2');
+    model.innerText = name;
   
-    let price2 = document.createElement('h4');
-    price2.textContent = `$${price}`
+    const price2 = document.createElement('h4');
+    price2.innerText = `$${price}`;
 
-    card2.appendChild(model)
-    card2.appendChild(price2)
-    main.appendChild(card2)
-    
-  }
+    card2.appendChild(model);
+    card2.appendChild(price2);
+    main.appendChild(card2);
+  };
 
-  function renderProduct(productArr) { 
+  function renderProducts(productArr) { 
 
-  let displays =  productArr.map((productObj) => {
-  let card = document.createElement('div') 
-  card.className = 'card';
+   productArr.map((productObj) => {
+   const card = document.createElement('div');
+   card.className = 'card';
 
-  let name = document.createElement('h2');
-  name.textContent = productObj.title;
+   const name = document.createElement('h2');
+   name.innerText = productObj.title;
 
-  let price = document.createElement('h4');
-  price.textContent = `$${productObj.price}`;
+   const price = document.createElement('h4');
+   price.innerText = `$${productObj.price}`;
 
-  let btn = document.createElement('button')
-  btn.textContent = 'ADD TO CART'
+   const btn = document.createElement('button');
+   btn.innerText = 'ADD TO CART';
 
-  main.appendChild(card)
-  card.appendChild(name);
-  card.appendChild(price);
-  card.appendChild(btn)  
+   main.appendChild(card);
+   card.appendChild(name);
+   card.appendChild(price);
+   card.appendChild(btn);
   });        
 }
 
-
-let btn = document.getElementById('clear')
-btn.addEventListener('click', () => {
- main.innerHTML = ''; 
+const btn = document.getElementById('clear');
+btn.addEventListener('click', () => { // callback
+ main.innerText = ''; 
 });
    
 p.addEventListener('mouseover', () => {
   p.style.color = "red"
-
 }); 
 
 p.addEventListener('mouseout', () => {
 p.style.color = "rebeccapurple"; 
 });
 
-});
+});       
+
+
+
 
